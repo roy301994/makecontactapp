@@ -1,4 +1,4 @@
-const {simpanPertanyaan}=require('./contacts')
+const {simpanPertanyaan,listContact,removeContact,detailContact}=require('./contacts')
 const yargs=require('yargs')
 
 
@@ -30,8 +30,62 @@ yargs.command({
   }
 
 
-})
+}).demandCommand() //menambah kan warning
 
+
+  yargs.command({
+
+    command : "list",
+    describe : "menampilkan list contact hp dan nama",
+    handler(){
+      listContact()
+    }
+  })
+  //menapilkan detail contact
+
+  yargs.command({
+    command:"detail",
+    describe: "Menampilkan detail kontak berdasarkan nama",
+    builder : {
+      nama:{
+      describe: 'Nama Lengkap',
+      demandOption: true,
+      type: 'string'
+        },
+    },
+    handler(argv){
+      detailContact(argv.nama)
+    }
+  
+  
+  })
+
+  yargs.command({
+    command:"remove",
+    describe: "menghapus sebuah kontak berdasarkan nama",
+    builder : {
+      nama:{
+      describe: 'Nama Lengkap',
+      demandOption: true,
+      type: 'string'
+        },
+    },
+    handler(argv){
+      removeContact(argv.nama)
+    }
+  
+  
+  })
+
+
+
+
+
+
+
+
+
+//menampilkan daftar nama dan hp contact
 
 
 yargs.parse()
