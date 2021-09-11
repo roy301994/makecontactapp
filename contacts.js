@@ -44,7 +44,7 @@ const simpanPertanyaan =(nama,email,hp)=>{
         }
        //pengecekan nohp
        if (!validator.isMobilePhone(hp ,'id-ID')){
-        console.log(chalk.red.inverse.bold('nomor anda tidak valid'))
+        console.log(chalk.red.inverse.bold('nomor hp anda tidak valid'))
         return false //return false diluar karena kalau email true maka artinya email teriisi maka dia langsung keluar dari function
       }
 
